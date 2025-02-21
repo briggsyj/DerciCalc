@@ -1,20 +1,17 @@
 import { useState, useMemo } from "react";
 import "./styles.css";
 
+const CM_PER_PIECE = 25 / 6; // 6 pieces per 25cm
+
 export default function App() {
   const [people, setPeople] = useState(8);
   const [pieces, setPieces] = useState(4);
-  const cmPerPiece = 25 / 6; // 6 pieces per 25cm
 
-  const [reqCm, minCm] = useMemo(() => {
-    const totalPieces = people * pieces;
-    const cmForTotalPieces = Math.round(cmPerPiece * totalPieces);
-    const order = Math.ceil(cmForTotalPieces / 25) * 25;
-    return [cmForTotalPieces, order];
-  }, [people, pieces]);
-  console.log((minCm - reqCm) / (25 / 6));
+  const totalPieces = people * pieces;
+  const reqCm = Math.round(CM_PER_PIECE * totalPieces);
+  const minCm = Math.ceil(reqCm / 25) * 25;
 
-  const leftoverSlices = Math.round((minCm - reqCm) / cmPerPiece);
+  const leftoverSlices = Math.round((minCm - reqCm) / CM_PER_PIECE);
 
   return (
     <div className="App">
@@ -50,17 +47,17 @@ export default function App() {
             </tr>
             <tr>
               <td>Required length:</td>
-              <td>{reqCm}cm</td>
+              <td>{reqCm || ''}cm</td>
             </tr>
             <tr>
               <th>Minimum order:</th>
               <td>
-                <b>{minCm}cm</b>
+                <b>{minCm || ''}cm</b>
               </td>
             </tr>
             <tr>
               <td>Leftover slices:</td>
-              <td>{leftoverSlices}</td>
+              <td>{leftoverSlices || ''}</td>
             </tr>
           </tbody>
         </table>
