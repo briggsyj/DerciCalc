@@ -4,15 +4,17 @@ import "./styles.css";
 export default function App() {
   const [people, setPeople] = useState(8);
   const [pieces, setPieces] = useState(4);
+  const cmPerPiece = 25 / 6; // 6 pieces per 25cm
 
-  const [calcCm, calcRounded] = useMemo(() => {
-    const cmPerPiece = 25 / 6; // 6 pieces per 25cm
+  const [reqCm, minCm] = useMemo(() => {
     const totalPieces = people * pieces;
-    const totalCm = Math.round(cmPerPiece * totalPieces);
-    const order = Math.ceil(totalCm / 25) * 25;
-
-    return [totalCm, order];
+    const cmForTotalPieces = Math.round(cmPerPiece * totalPieces);
+    const order = Math.ceil(cmForTotalPieces / 25) * 25;
+    return [cmForTotalPieces, order];
   }, [people, pieces]);
+  console.log((minCm - reqCm) / (25 / 6));
+
+  const leftoverSlices = Math.round((minCm - reqCm) / cmPerPiece);
 
   return (
     <div className="App">
@@ -48,17 +50,17 @@ export default function App() {
             </tr>
             <tr>
               <td>Required length:</td>
-              <td>{calcCm}cm</td>
+              <td>{reqCm}cm</td>
             </tr>
             <tr>
               <th>Minimum order:</th>
               <td>
-                <b>{calcRounded}cm</b>
+                <b>{minCm}cm</b>
               </td>
             </tr>
             <tr>
               <td>Leftover slices:</td>
-              <td>{Math.floor((calcRounded - calcCm) / (25 / 6))}</td>
+              <td>{leftoverSlices}</td>
             </tr>
           </tbody>
         </table>
