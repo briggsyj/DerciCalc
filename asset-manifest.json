@@ -1,21 +1,14 @@
 {
   "files": {
-    "main.css": "/DerciCalc/static/css/main.999e3af2.chunk.css",
-    "main.js": "/DerciCalc/static/js/main.0f595bd5.chunk.js",
-    "main.js.map": "/DerciCalc/static/js/main.0f595bd5.chunk.js.map",
-    "runtime-main.js": "/DerciCalc/static/js/runtime-main.35036d86.js",
-    "runtime-main.js.map": "/DerciCalc/static/js/runtime-main.35036d86.js.map",
-    "static/js/2.429dc860.chunk.js": "/DerciCalc/static/js/2.429dc860.chunk.js",
-    "static/js/2.429dc860.chunk.js.map": "/DerciCalc/static/js/2.429dc860.chunk.js.map",
+    "main.css": "/DerciCalc/static/css/main.93028954.css",
+    "main.js": "/DerciCalc/static/js/main.698cce05.js",
+    "static/media/pizza.png": "/DerciCalc/static/media/pizza.c80858fbee4ccb33f8ea.png",
     "index.html": "/DerciCalc/index.html",
-    "static/css/main.999e3af2.chunk.css.map": "/DerciCalc/static/css/main.999e3af2.chunk.css.map",
-    "static/js/2.429dc860.chunk.js.LICENSE.txt": "/DerciCalc/static/js/2.429dc860.chunk.js.LICENSE.txt",
-    "static/media/styles.css": "/DerciCalc/static/media/pizza.c80858fb.png"
+    "main.93028954.css.map": "/DerciCalc/static/css/main.93028954.css.map",
+    "main.698cce05.js.map": "/DerciCalc/static/js/main.698cce05.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.35036d86.js",
-    "static/js/2.429dc860.chunk.js",
-    "static/css/main.999e3af2.chunk.css",
-    "static/js/main.0f595bd5.chunk.js"
+    "static/css/main.93028954.css",
+    "static/js/main.698cce05.js"
   ]
 }
