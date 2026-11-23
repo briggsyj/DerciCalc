@@ -9,6 +9,8 @@ const MENU_URL = "https://www.arrivedercipizza.com.au/menu";
 // Slice ranges: 0 | 1 | 2–3 | 4–5 | 6+
 const TIER_SHADER = ["vhsgrey", "vhs", "pulse", "drift", "kaleido"];
 const ECHO_COLORS = ["#6b1fb1", "#19e3ff", "#ffc94a", "#ff8c1a", "#ff2e88"];
+// 6+ echo trail: 10 outlines cycling the palette twice
+const ECHOES = [...ECHO_COLORS, ...ECHO_COLORS];
 const EXTRUDE = ["#c2186b", "#9b1a8f", "#6b1fb1", "#56147a", "#3d0f57", "#2a0b3d", "#1f0830", "#19e3ff", "#0f0614", "#14081a"];
 const HALO = [
   { c: "#19e3ff", w0: 12, w1: 20 },
@@ -36,22 +38,22 @@ function feedback(people, slices) {
 }
 
 const echoStyle = (j) => {
-  const d = ECHO_COLORS.length - j;
-  return { opacity: 1 - d * 0.12, animationDelay: `${d * 0.12}s` };
+  const d = ECHOES.length - j;
+  return { opacity: 1 - d * 0.06, animationDelay: `${d * 0.12}s` };
 };
 
 // Hollow outline copies that trail around a box-shaped element (6+ only).
 function BoxEchoes() {
-  return ECHO_COLORS.map((c, j) => (
-    <span key={c} className="echo" aria-hidden="true" style={{ ...echoStyle(j), borderColor: c }} />
+  return ECHOES.map((c, j) => (
+    <span key={j} className="echo" aria-hidden="true" style={{ ...echoStyle(j), borderColor: c }} />
   ));
 }
 
 // Hollow outline copies of a piece of text (6+ only).
 function TextEchoes({ children, block = false }) {
-  return ECHO_COLORS.map((c, j) => (
+  return ECHOES.map((c, j) => (
     <span
-      key={c}
+      key={j}
       className={block ? "echo-tb" : "echo-t"}
       aria-hidden="true"
       style={{ ...echoStyle(j), WebkitTextStrokeColor: c }}
@@ -296,8 +298,8 @@ export default function App() {
         <header className="header">
           <div className={`vib vib-${tier}`} aria-hidden="true">
             {hotline &&
-              ECHO_COLORS.map((c, j) => (
-                <div key={c} className="pz-echo" style={{ ...echoStyle(j), background: c }} />
+              ECHOES.map((c, j) => (
+                <div key={j} className="pz-echo" style={{ ...echoStyle(j), background: c }} />
               ))}
             <img className={`pizza ${liquid ? "beat-pz" : ""}`} src={pizzaUrl} alt="" />
           </div>
