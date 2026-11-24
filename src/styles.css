@@ -787,7 +787,7 @@ img {
 .echo-tb {
   position: absolute;
   pointer-events: none;
-  animation: echoC 3.2s ease-in-out infinite;
+  animation: echoC var(--echo-dur, 3.2s) ease-in-out infinite;
 }
 
 .echo {

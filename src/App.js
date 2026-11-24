@@ -300,13 +300,15 @@ export default function App() {
   }, [s]);
 
   // The vortex speeds up a notch for every slice past 6.
-  const shaderSpeed = s > 6 ? Math.min(0.8 + (s - 6) * 0.2, 2.6) : 0.8;
+  const shaderSpeed = s > 6 ? Math.min(0.8 + (s - 6) * 0.3, 3.2) : 0.8;
+  // Echo trails loop faster by the same factor (3.2s at 6 slices and below).
+  const echoDur = `${((3.2 * 0.8) / shaderSpeed).toFixed(2)}s`;
   const kickClass = kick ? (kick % 2 ? "kick-a" : "kick-b") : "";
 
   const numClass = ["order-num", tier === 2 && "beat-num", liquid && "rainbow-num beat-num4"].filter(Boolean).join(" ");
 
   return (
-    <div className={`app tier-${tier} ${hotline ? "theme-neon" : "theme-pizza"}`}>
+    <div className={`app tier-${tier} ${hotline ? "theme-neon" : "theme-pizza"}`} style={{ "--echo-dur": echoDur }}>
       <PizzaShader mode={TIER_SHADER[tier]} intensity={0.75} speed={shaderSpeed} />
 
       <main className={`main ${kickClass}`}>
