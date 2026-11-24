@@ -799,6 +799,7 @@ img {
 
 .pz-echo {
   inset: 0;
+  animation-name: echoPz;
   transform: rotate(-24deg);
   -webkit-mask: url("./pizza.png") center / 100% 100% no-repeat;
   mask: url("./pizza.png") center / 100% 100% no-repeat;
@@ -821,6 +822,26 @@ img {
 .echo-tb {
   inset: 0;
   padding: inherit;
+}
+
+@keyframes echoPz {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  25% {
+    translate: calc(var(--et) * 32px) calc(var(--et) * -20px);
+    rotate: calc(var(--et) * 4deg);
+  }
+  50% {
+    translate: 0 calc(var(--et) * 24px);
+    rotate: calc(var(--et) * -3deg);
+  }
+  75% {
+    translate: calc(var(--et) * -32px) calc(var(--et) * -16px);
+    rotate: calc(var(--et) * 3deg);
+  }
 }
 
 /* ---------- Reduced motion ---------- */

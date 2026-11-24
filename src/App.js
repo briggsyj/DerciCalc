@@ -11,6 +11,9 @@ const TIER_SHADER = ["vhsgrey", "vhs", "pulse", "drift", "kaleido"];
 const ECHO_COLORS = ["#6b1fb1", "#19e3ff", "#ffc94a", "#ff8c1a", "#ff2e88"];
 // 6+ echo trail: 10 outlines cycling the palette twice
 const ECHOES = [...ECHO_COLORS, ...ECHO_COLORS];
+// Pizza echo trail grows with the slice range: copies shown and swing scale.
+const PZ_COUNT = [2, 3, 5, 7, 10];
+const PZ_TRAVEL = [0.25, 0.4, 0.6, 0.8, 1];
 const EXTRUDE = ["#c2186b", "#9b1a8f", "#6b1fb1", "#56147a", "#3d0f57", "#2a0b3d", "#1f0830", "#19e3ff", "#0f0614", "#14081a"];
 const HALO = [
   { c: "#19e3ff", w0: 12, w1: 20 },
@@ -296,11 +299,12 @@ export default function App() {
 
       <main className="main">
         <header className="header">
-          <div className={`vib vib-${tier}`} aria-hidden="true">
-            {hotline &&
-              ECHOES.map((c, j) => (
+          <div className={`vib vib-${tier}`} aria-hidden="true" style={{ "--et": PZ_TRAVEL[tier] }}>
+            {ECHOES.map((c, j) =>
+              j < ECHOES.length - PZ_COUNT[tier] ? null : (
                 <div key={j} className="pz-echo" style={{ ...echoStyle(j), background: c }} />
-              ))}
+              )
+            )}
             <img className={`pizza ${liquid ? "beat-pz" : ""}`} src={pizzaUrl} alt="" />
           </div>
           <Title hotline={hotline} />
