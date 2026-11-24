@@ -844,6 +844,32 @@ img {
   }
 }
 
+/* ---------- Above 6: whole-UI kick when a slice is added ---------- */
+@keyframes kickA {
+  0% { scale: 1; }
+  15% { scale: 1.04; }
+  100% { scale: 1; }
+}
+
+@keyframes kickB {
+  0% { scale: 1; }
+  15% { scale: 1.04; }
+  100% { scale: 1; }
+}
+
+.kick-a,
+.kick-b {
+  transform-origin: 50% 40%;
+}
+
+.kick-a {
+  animation: kickA 0.45s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.kick-b {
+  animation: kickB 0.45s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .vib,
@@ -859,7 +885,9 @@ img {
   .echo,
   .pz-echo,
   .echo-t,
-  .echo-tb {
+  .echo-tb,
+  .kick-a,
+  .kick-b {
     animation: none;
   }
 }
