@@ -250,6 +250,8 @@ export default function App() {
   const [people, setPeople] = useState("8");
   const [slices, setSlices] = useState("3");
   const [showDisc, setShowDisc] = useState(false);
+  const [kick, setKick] = useState(0);
+  const prevSlices = useRef(null);
   const [baseline, setBaseline] = useState(52);
   const numRef = useRef(null);
   const baseRef = useRef(null);
@@ -291,13 +293,23 @@ export default function App() {
     document.body.dataset.theme = hotline ? "neon" : "pizza";
   }, [hotline]);
 
+  // Above 6 slices, every slice added kicks the whole UI like a beat.
+  useEffect(() => {
+    if (prevSlices.current !== null && s > prevSlices.current && s > 6) setKick((k) => k + 1);
+    prevSlices.current = s;
+  }, [s]);
+
+  // The vortex speeds up a notch for every slice past 6.
+  const shaderSpeed = s > 6 ? Math.min(0.8 + (s - 6) * 0.2, 2.6) : 0.8;
+  const kickClass = kick ? (kick % 2 ? "kick-a" : "kick-b") : "";
+
   const numClass = ["order-num", tier === 2 && "beat-num", liquid && "rainbow-num beat-num4"].filter(Boolean).join(" ");
 
   return (
     <div className={`app tier-${tier} ${hotline ? "theme-neon" : "theme-pizza"}`}>
-      <PizzaShader mode={TIER_SHADER[tier]} intensity={0.75} speed={0.8} />
+      <PizzaShader mode={TIER_SHADER[tier]} intensity={0.75} speed={shaderSpeed} />
 
-      <main className="main">
+      <main className={`main ${kickClass}`}>
         <header className="header">
           <div className={`vib vib-${tier}`} aria-hidden="true" style={{ "--et": PZ_TRAVEL[tier] }}>
             {ECHOES.map((c, j) =>
