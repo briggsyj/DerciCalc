@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/DerciCalc/static/css/main.38dea2e4.css",
-    "main.js": "/DerciCalc/static/js/main.e442abd5.js",
+    "main.css": "/DerciCalc/static/css/main.2b37d5c5.css",
+    "main.js": "/DerciCalc/static/js/main.218aa2bc.js",
     "static/media/pizza.png": "/DerciCalc/static/media/pizza.c80858fbee4ccb33f8ea.png",
     "index.html": "/DerciCalc/index.html",
-    "main.38dea2e4.css.map": "/DerciCalc/static/css/main.38dea2e4.css.map",
-    "main.e442abd5.js.map": "/DerciCalc/static/js/main.e442abd5.js.map"
+    "main.2b37d5c5.css.map": "/DerciCalc/static/css/main.2b37d5c5.css.map",
+    "main.218aa2bc.js.map": "/DerciCalc/static/js/main.218aa2bc.js.map"
   },
   "entrypoints": [
-    "static/css/main.38dea2e4.css",
-    "static/js/main.e442abd5.js"
+    "static/css/main.2b37d5c5.css",
+    "static/js/main.218aa2bc.js"
   ]
 }
