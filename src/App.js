@@ -245,7 +245,7 @@ const clean = (v) => String(v).replace(/[^0-9]/g, "").slice(0, 3);
 
 export default function App() {
   const [people, setPeople] = useState("8");
-  const [slices, setSlices] = useState("1");
+  const [slices, setSlices] = useState("3");
   const [showDisc, setShowDisc] = useState(false);
   const [baseline, setBaseline] = useState(52);
   const numRef = useRef(null);
